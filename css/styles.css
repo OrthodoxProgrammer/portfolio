@@ -1,0 +1,1076 @@
+/* ----- Reset ----- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+:root {
+  /* Side margin: 150px on a 1920 screen, shrinks proportionally, never below 32px */
+  --pad: clamp(32px, 7.8vw, 150px);
+  /* Header height — the horizontal rule and grid lines hang from it */
+  --header-h: 100px;
+}
+
+body {
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #ffffff;
+  color: #0E110F;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ----- Loading screen ----- */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.loader__text {
+  color: #0E110F;
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 450;
+  font-style: normal;
+  font-size: 32px;
+  line-height: normal;
+}
+
+.loader__pct {
+  color: #0E110F;
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+  font-size: min(150px, 20vw, 24vh);
+  line-height: 0.8667;       /* = 130/150 */
+  letter-spacing: -0.02em;   /* = -3px at 150px */
+}
+
+/* ----- Hero block: full screen ----- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ----- Stage: headline + photo, centered as one unit ----- */
+.stage {
+  position: relative;
+  display: inline-block;
+  z-index: 2;
+}
+
+/* ----- Headline ----- */
+/* 150px on desktop (>=1280w & tall enough); scales down by width AND height
+   so it never collides with the bio on smaller viewports. */
+.hero__title {
+  font-weight: 700;
+  font-style: normal;
+  font-size: min(150px, 11.72vw, 22vh);
+  line-height: 0.8667;        /* = 130/150 */
+  letter-spacing: -0.02em;    /* = -3px at 150px */
+  text-align: center;
+  opacity: 0;                 /* animated in by JS when the loader finishes */
+  will-change: opacity, transform;
+}
+
+/* ----- Grid lines ----- */
+.grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.grid__line {
+  position: absolute;
+  top: var(--header-h);
+  bottom: 0;
+  width: 1px;
+  background-color: #E7E7E5;
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+.grid__line--left {
+  left: var(--pad);
+}
+
+.grid__line--center {
+  left: 50%;
+}
+
+.grid__line--center2 {
+  left: 50%;
+}
+
+.grid__line--right {
+  right: var(--pad);
+}
+
+/* ----- Header ----- */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 calc(var(--pad) + 20px);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo img {
+  display: block;
+  height: 26px;
+  width: auto;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.1vw, 40px);
+}
+
+.nav__link {
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 450;
+  font-style: normal;
+  font-size: 20px;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 2px;
+  transition: opacity 0.2s ease;
+}
+
+.nav__link:hover .nav__arrow {
+  transform: translate(4px, -4px);
+}
+
+.nav__arrow {
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 500;
+  position: relative;
+  top: 1px;
+  transition: transform 0.2s ease;
+}
+
+/* ----- Burger button (hidden on desktop) ----- */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #0E110F;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.header.menu-open .burger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.header.menu-open .burger span:nth-child(2) {
+  opacity: 0;
+}
+
+.header.menu-open .burger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.header__rule {
+  position: absolute;
+  top: var(--header-h);
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #E7E7E5;
+  z-index: 1;
+}
+
+/* ----- Bottom page rule (200px below the about text) ----- */
+.page-rule {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #E7E7E5;
+  position: relative;
+  z-index: 2;
+}
+
+/* ----- Bio ----- */
+.bio {
+  position: absolute;
+  top: clamp(150px, 23vh, 252px);
+  left: calc(var(--pad) + 16px);
+  z-index: 3;
+  width: 546px;
+  max-width: calc(100vw - var(--pad) * 2 - 16px);
+  color: #0E110F;
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 450;
+  font-style: normal;
+  font-size: 20px;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+
+/* ----- Photo: anchored to the headline's bottom-right ----- */
+.photo {
+  position: absolute;
+  z-index: 2;
+  right: clamp(-37px, -2.9vw, -20px);
+  bottom: clamp(-200px, -15.6vw, -120px);
+  width: clamp(120px, 14.4vw, 184px);
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 40px;
+}
+
+/* Smooth easing for the cursor-driven parallax drift */
+.photo {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ----- Reveal (driven by JS after 4s) ----- */
+.reveal {
+  opacity: 0;
+  will-change: opacity;
+}
+
+/* ----- About block ----- */
+.about {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--pad) 200px;
+  /* exact 200px gap from the avatar is maintained via JS */
+}
+
+.about__text {
+  width: 1580px;
+  max-width: 100%;
+  margin: 0;
+  text-align: center;
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: clamp(34px, 4.17vw, 64px);
+  line-height: 1; /* 100% */
+  letter-spacing: -0.02em; /* = -1.28px at 64px */
+  text-wrap: balance;
+  /* Gradient spans the WHOLE block top→bottom, clipped to the text */
+  background: linear-gradient(180deg, #0E110F 0%, #9A9D9C 60%, #ECECEC 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Lead stays solid dark, overriding the gradient */
+.about__lead {
+  -webkit-text-fill-color: #0E110F;
+  color: #0E110F;
+}
+
+/* ----- Cases grid ----- */
+.cases {
+  position: relative;
+  z-index: 2;
+}
+
+.cases__row {
+  border-bottom: 1px solid #E7E7E5; /* full-bleed horizontal divider */
+}
+
+.cases__row--two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 var(--pad); /* align columns to the left/center/right lines */
+}
+
+.case {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 24px; /* 100px top → image, caption → 100px bottom */
+  gap: 32px;           /* image → caption */
+}
+
+.case__media img {
+  display: block;
+  width: clamp(200px, 17vw, 326px);
+  height: auto;
+}
+
+.case--wide {
+  padding: 100px var(--pad);
+}
+
+.case__media--browser img {
+  width: clamp(420px, 42vw, 806px);
+}
+
+.case__caption {
+  margin: 0;
+  text-align: center;
+  color: #0E110F;
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 450;
+  font-style: normal;
+  font-size: 20px;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+
+/* clickable cases */
+.case {
+  cursor: pointer;
+}
+
+.case__media img {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.case:hover .case__media img,
+.case:focus-visible .case__media img {
+  transform: translateY(-8px);
+}
+
+.case:focus-visible {
+  outline: none;
+}
+
+/* ----- Case modal ----- */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background-color: #2A2A2A;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+}
+
+.modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease;
+}
+
+.modal__center {
+  min-height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 96px clamp(40px, 6vw, 120px);
+}
+
+.modal__close {
+  position: fixed;
+  top: 44px;
+  right: clamp(28px, 4vw, 64px);
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.modal__close:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.modal__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(48px, 7vw, 130px);
+  /* subtle entrance */
+  transform: translateY(16px);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.05s, opacity 0.5s ease 0.05s;
+}
+
+.modal.is-open .modal__inner {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal__media {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.modal__media img {
+  display: block;
+  width: clamp(260px, 19vw, 360px);
+  height: auto;
+}
+
+.modal__text {
+  flex: 0 1 580px;
+  max-width: 580px;
+}
+
+.modal__title {
+  margin: 0 0 28px;
+  color: #ffffff;
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: -0.8px;
+  text-wrap: balance;
+}
+
+.modal__body {
+  color: #ffffff;
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 450;
+  font-size: 20px;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+
+.modal__body p {
+  margin: 0 0 20px;
+}
+
+.modal__body p:last-child {
+  margin-bottom: 0;
+}
+
+.modal__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 44px;
+  padding: 20px 36px;
+  border-radius: 100px;
+  background-color: #ffffff;
+  color: #0E110F;
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.2px;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.modal__btn:hover {
+  transform: translateY(-3px);
+}
+
+.modal__btn-arrow {
+  font-size: 16px;
+  position: relative;
+  top: 1px;
+  transition: transform 0.25s ease;
+}
+
+.modal__btn:hover .modal__btn-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* layout variants */
+.modal--media-right .modal__inner {
+  flex-direction: row-reverse;
+}
+
+.modal--stacked .modal__inner {
+  flex-direction: column;
+  text-align: center;
+  gap: 56px;
+}
+
+.modal--stacked .modal__media img {
+  width: clamp(480px, 33vw, 640px);
+}
+
+.modal--stacked .modal__text {
+  flex: 0 1 auto;
+  max-width: 760px;
+}
+
+.modal--stacked .modal__title {
+  margin-bottom: 24px;
+}
+
+.modal--stacked .modal__btn {
+  margin-top: 40px;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* ----- Family bank block ----- */
+.family {
+  position: relative;
+  z-index: 2;
+  padding: 200px var(--pad) 160px; /* 200px from the top divider to the title */
+  border-bottom: 1px solid #E7E7E5; /* closing horizontal line */
+}
+
+/* center divider — resumes below the Mindbox row via .grid__line--center2 */
+.family__title {
+  margin: 0 0 88px;
+  padding-left: 16px;
+  color: #0E110F;
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 100%;
+  letter-spacing: -1.28px;
+}
+
+.family__title-line {
+  display: block;
+}
+
+.family__title-line--indent {
+  padding-left: 33%;
+}
+
+.family__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.family__item {
+  padding-left: 16px;
+  min-width: 0; /* let grid columns shrink the text instead of overflowing */
+}
+
+.family__item--a {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.family__item--b {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.family__item--c {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.family__plus {
+  display: block;
+  margin-bottom: 40px;
+  line-height: 0;
+}
+
+.family__h {
+  margin: 0 0 24px;
+  max-width: 568px;
+  color: #0E110F;
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: -0.8px;
+  text-wrap: pretty;
+}
+
+.family__p {
+  width: 100%;
+  max-width: 568px;
+  margin: 0;
+  color: #0E110F;
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 450;
+  font-size: 20px;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+
+/* ----- Final block: work history + contact ----- */
+.final {
+  position: relative;
+  z-index: 2;
+}
+
+.work {
+  padding-top: 140px; /* breathing room after the family block */
+}
+
+.work__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 110px;
+  padding: 0 var(--pad);
+  border-bottom: 1px solid #E7E7E5; /* full-bleed divider between rows */
+}
+
+.work__row:last-child {
+  border-bottom: none; /* list is open at the bottom */
+}
+
+.work__name {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 2px;
+  width: max-content;
+  padding-left: 16px;
+  color: #0E110F;
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: -0.8px;
+}
+
+.work__arrow {
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 450;
+  position: relative;
+  top: 2px;
+  transition: transform 0.2s ease;
+}
+
+.work__name:hover .work__arrow {
+  transform: translate(4px, -4px);
+}
+
+.work__right {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 16px;
+  padding-left: 16px;
+}
+
+.work__dates,
+.work__desc {
+  color: #0E110F;
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 450;
+  font-size: 20px;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+
+.contact {
+  padding: 200px var(--pad) 220px;
+  text-align: center;
+}
+
+.contact__title {
+  margin: 0;
+  color: #0E110F;
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 100%;
+  letter-spacing: -1.28px;
+  text-align: center;
+}
+
+.contact__handle {
+  display: inline-block;
+  margin-top: 64px;
+  color: #0E110F;
+  font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 100%;
+  letter-spacing: -1.28px;
+  transition: opacity 0.2s ease;
+}
+
+.contact__handle:hover {
+  opacity: 0.55;
+}
+
+/* ----- Responsive safety: keep headline clear of the bio on shorter
+   viewports (tall desktop screens stay perfectly centered). ----- */
+@media (max-height: 900px) {
+  .stage {
+    transform: translateY(26px);
+  }
+}
+
+@media (max-height: 720px) {
+  .stage {
+    transform: translateY(18px);
+  }
+  .hero__title {
+    font-size: min(120px, 11.72vw, 20vh);
+  }
+}
+
+/* Narrow desktop / tablet: tighten the nav and shrink the headline gracefully */
+@media (max-width: 900px) {
+  .nav {
+    gap: 18px;
+  }
+  .nav__link {
+    font-size: 17px;
+  }
+
+  /* Family block: columns get too narrow — switch to one column */
+  .family__grid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+  .family__item--a,
+  .family__item--b,
+  .family__item--c {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .family__title-line--indent {
+    padding-left: 0;
+  }
+}
+
+/* ===== Responsive: narrow desktop / tablet (≤1180px) ===== */
+@media (max-width: 1180px) {
+  .family__title {
+    font-size: 52px;
+    letter-spacing: -1.04px;
+  }
+  .contact__title,
+  .contact__handle {
+    font-size: 52px;
+    letter-spacing: -1.04px;
+  }
+  .family__h {
+    font-size: 34px;
+    letter-spacing: -0.68px;
+  }
+  .work__name {
+    font-size: 34px;
+    letter-spacing: -0.68px;
+  }
+  .work__right {
+    grid-template-columns: 170px 1fr;
+  }
+  .modal__inner {
+    gap: 44px;
+  }
+  .modal__title {
+    font-size: 34px;
+    letter-spacing: -0.68px;
+  }
+}
+
+/* ===== Responsive: mobile (≤768px) — single column ===== */
+@media (max-width: 768px) {
+  :root {
+    --pad: 20px;
+    --header-h: 64px;
+  }
+
+  /* The layout is one column now — the center dividers disappear */
+  .grid__line--center,
+  .grid__line--center2 {
+    display: none;
+  }
+
+  /* Header: logo + burger; nav becomes a dropdown panel */
+  .header {
+    padding: 0 var(--pad);
+    gap: 12px;
+  }
+  .logo img {
+    height: 20px;
+  }
+  .burger {
+    display: flex;
+  }
+  /* the open menu must sit above the bio and everything else */
+  .header.menu-open {
+    z-index: 40;
+  }
+  .nav {
+    display: none;
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    z-index: 5;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    padding: 28px var(--pad) 36px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #E7E7E5;
+  }
+  .header.menu-open .nav {
+    display: flex;
+  }
+  .nav__link {
+    font-size: 24px;
+    letter-spacing: -0.24px;
+  }
+  .nav__arrow {
+    font-size: 16px;
+  }
+
+  /* Loader */
+  .loader__text {
+    font-size: 20px;
+  }
+
+  /* Hero: vertical centered column — photo → headline → bio */
+  .hero {
+    flex-direction: column;
+    padding: calc(var(--header-h) + 32px) var(--pad) 56px;
+  }
+  .stage {
+    display: contents; /* photo and headline become direct flex items */
+  }
+  .photo {
+    order: 1;
+    position: static;
+    width: clamp(190px, 50vw, 280px);
+  }
+  .photo img {
+    border-radius: 36px;
+  }
+  .hero__title {
+    order: 2;
+    margin-top: clamp(36px, 9vw, 56px);
+    font-size: min(64px, 16.5vw);
+  }
+  .bio {
+    order: 3;
+    position: static;
+    width: auto;
+    max-width: 420px;
+    margin-top: clamp(28px, 7vw, 44px);
+    text-align: center;
+    font-size: 17px;
+  }
+
+  /* About */
+  .about {
+    padding-bottom: 120px;
+  }
+  .about__text {
+    font-size: clamp(26px, 8vw, 40px);
+  }
+
+  /* Cases: 2 columns → 1 column */
+  .cases__row--two {
+    grid-template-columns: 1fr;
+  }
+  .cases__row--two .case + .case {
+    border-top: 1px solid #E7E7E5;
+  }
+  .case {
+    padding: 64px 16px;
+    gap: 24px;
+  }
+  .case--wide {
+    padding: 64px var(--pad);
+  }
+  .case__media img {
+    width: min(240px, 56vw);
+  }
+  .case__media--browser img {
+    width: min(480px, 88vw);
+  }
+
+  /* Family: 2 columns → 1 column */
+  .family {
+    padding: 120px var(--pad) 96px;
+  }
+  .family__title {
+    font-size: 36px;
+    letter-spacing: -0.72px;
+    margin-bottom: 56px;
+    padding-left: 8px;
+  }
+  .family__title-line--indent {
+    padding-left: 0;
+  }
+  .family__grid {
+    grid-template-columns: 1fr;
+    gap: 64px;
+  }
+  .family__item--a,
+  .family__item--b,
+  .family__item--c {
+    grid-column: 1;
+    grid-row: auto;
+    padding-left: 8px;
+  }
+  .family__plus {
+    margin-bottom: 24px;
+  }
+  .family__item {
+    min-width: 0;
+  }
+  .family__h {
+    max-width: none;
+    font-size: 26px;
+    letter-spacing: -0.52px;
+  }
+  .family__p {
+    width: auto;
+    font-size: 17px;
+  }
+
+  /* Work history: rows stack vertically */
+  .work {
+    padding-top: 80px;
+  }
+  .work__row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    min-height: 0;
+    padding: 24px var(--pad);
+    align-items: start;
+  }
+  .work__name {
+    font-size: 28px;
+    letter-spacing: -0.56px;
+    padding-left: 8px;
+  }
+  .work__right {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding-left: 8px;
+  }
+  .work__dates,
+  .work__desc {
+    font-size: 16px;
+  }
+
+  /* Contact */
+  .contact {
+    padding: 120px var(--pad) 140px;
+  }
+  .contact__title {
+    font-size: 30px;
+    letter-spacing: -0.6px;
+  }
+  .contact__handle {
+    font-size: 30px;
+    letter-spacing: -0.6px;
+    margin-top: 36px;
+  }
+
+  /* Modal → one column */
+  .modal__center {
+    padding: 84px 24px 64px;
+  }
+  .modal__close {
+    top: 18px;
+    right: 18px;
+  }
+  .modal__inner,
+  .modal--media-right .modal__inner,
+  .modal--stacked .modal__inner {
+    flex-direction: column;
+    gap: 36px;
+  }
+  .modal__media img {
+    width: min(220px, 56vw);
+  }
+  .modal--stacked .modal__media img {
+    width: min(420px, 86vw);
+  }
+  .modal__text,
+  .modal--stacked .modal__text {
+    flex: 0 1 auto;
+    max-width: 100%;
+  }
+  .modal__title {
+    font-size: 28px;
+    letter-spacing: -0.56px;
+    margin-bottom: 20px;
+  }
+  .modal__body {
+    font-size: 17px;
+  }
+  .modal__btn {
+    margin-top: 32px;
+    padding: 16px 28px;
+    font-size: 17px;
+  }
+}
+
+/* ===== Responsive: small phones (≤420px) ===== */
+@media (max-width: 420px) {
+  .logo img {
+    height: 18px;
+  }
+}
