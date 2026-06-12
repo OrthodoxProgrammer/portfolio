@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alcher — Ya delayu dizajn</title>
+  <meta name="description" content="Персональный сайт продуктового дизайнера" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+</head>
+<body>
+  <!-- Loading screen -->
+  <div class="loader" id="loader" data-screen-label="Loader">
+    <p class="loader__text">Ща все будет&nbsp;— загружается</p>
+    <div class="loader__pct"><span id="pct">1</span>%</div>
+  </div>
+
+  <!-- Vertical grid lines (span the full page height) -->
+  <div class="grid" aria-hidden="true">
+    <span class="grid__line grid__line--left"></span>
+    <span class="grid__line grid__line--center"></span>
+    <span class="grid__line grid__line--center2"></span>
+    <span class="grid__line grid__line--right"></span>
+  </div>
+
+  <main class="hero" data-screen-label="Hero">
+    <!-- Header -->
+    <header class="header reveal">
+      <a class="logo" href="/" aria-label="Alcher"><img src="img/logo.svg" alt="Alcher" /></a>
+      <nav class="nav" id="siteNav">
+        <a class="nav__link" href="https://t.me/alcher_13" target="_blank" rel="noopener">Telegram<span class="nav__arrow">↗</span></a>
+        <a class="nav__link" href="https://t.me/uxrefs" target="_blank" rel="noopener">tg-канал<span class="nav__arrow">↗</span></a>
+        <a class="nav__link" href="https://www.linkedin.com/in/alex-cherkashin-13264a322/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B8n7CG3OTSFaOwglChkOGoA%3D%3D" target="_blank" rel="noopener">LinkedIn<span class="nav__arrow">↗</span></a>
+        <a class="nav__link" href="https://hh.ru/resume/7c943d1eff08f6c3e50039ed1f474d46557036" target="_blank" rel="noopener">НН профиль<span class="nav__arrow">↗</span></a>
+      </nav>
+      <button class="burger" id="burgerBtn" type="button" aria-label="Меню" aria-expanded="false" aria-controls="siteNav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+    <span class="header__rule reveal" aria-hidden="true"></span>
+
+    <!-- Bio -->
+    <p class="bio reveal">Лёша, продуктовый дизайнер. 4&nbsp;года проектирую цифровые продукты. Сейчас&nbsp;— в&nbsp;ВТБ, до&nbsp;этого в&nbsp;студии «Луч» работал над&nbsp;продуктами Авито и&nbsp;Mindbox</p>
+
+    <!-- Headline + photo as one centered stage -->
+    <div class="stage">
+      <h1 class="hero__title">Ya delayu<br />dizajn</h1>
+      <div class="photo reveal">
+        <img src="img/avatar.jpg" alt="Лёша, продуктовый дизайнер" />
+      </div>
+    </div>
+  </main>
+
+  <!-- About block -->
+  <section class="about" data-screen-label="About">
+    <p class="about__text">
+      <span class="about__lead">Проектирую сложные интерфейсы&nbsp;</span><span class="about__fade">— довожу задачу от&nbsp;проблемы до&nbsp;выхода в&nbsp;прод. Планирую работу и&nbsp;согласую ожидания с&nbsp;командой. Провожу юзабилити-тестирования, проверяю гипотезы, развивал дизайн-систему. Готовлю макеты к&nbsp;разработке и&nbsp;сопровождаю реализацию. Погружаюсь в&nbsp;продукт, над&nbsp;которым работаю и&nbsp;становлюсь его активным пользователем.</span>
+    </p>
+  </section>
+
+  <!-- Bottom horizontal rule (200px below the about text) -->
+  <span class="page-rule reveal" aria-hidden="true"></span>
+
+  <!-- Cases grid -->
+  <section class="cases" data-screen-label="Cases">
+    <div class="cases__row cases__row--two">
+      <article class="case" data-case="vtb-pay" role="button" tabindex="0" aria-label="Открыть кейс ВТБ Pay">
+        <div class="case__media"><img src="img/case-vtb-pay.png" alt="ВТБ Pay" /></div>
+        <p class="case__caption">ВТБ Pay</p>
+      </article>
+      <article class="case" data-case="avito" role="button" tabindex="0" aria-label="Открыть кейс Авито Подработка">
+        <div class="case__media"><img src="img/case-avito.png" alt="Авито Подработка" /></div>
+        <p class="case__caption">Авито Подработка</p>
+      </article>
+    </div>
+    <div class="cases__row cases__row--two">
+      <article class="case" data-case="3dsecure" role="button" tabindex="0" aria-label="Открыть кейс 3D Secure">
+        <div class="case__media"><img src="img/case-3dsecure.png" alt="3D Secure" /></div>
+        <p class="case__caption">3D Secure</p>
+      </article>
+      <article class="case" data-case="loto" role="button" tabindex="0" aria-label="Открыть кейс Приложение национальной лотереи">
+        <div class="case__media"><img src="img/case-loto.png" alt="Приложение национальной лотереи" /></div>
+        <p class="case__caption">Приложение национальной лотереи</p>
+      </article>
+    </div>
+    <div class="cases__row cases__row--one">
+      <article class="case case--wide" data-case="mindbox" role="button" tabindex="0" aria-label="Открыть кейс Mindbox">
+        <div class="case__media case__media--browser"><img src="img/case-mindbox.png" alt="Mindbox" /></div>
+        <p class="case__caption">Mindbox</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Family bank block -->
+  <section class="family" data-screen-label="Family">
+    <h2 class="family__title">
+      <span class="family__title-line">Сейчас отвечаю за&nbsp;дизайн</span>
+      <span class="family__title-line family__title-line--indent">семейного банка в&nbsp;ВТБ</span>
+    </h2>
+    <div class="family__grid">
+      <div class="family__item family__item--a">
+        <h3 class="family__h">Что это?</h3>
+        <p class="family__p">Раздел «Приумножай с&nbsp;семьёй и&nbsp;близкими» в&nbsp;ВТБ Онлайн: объединяет близких в&nbsp;семейную группу&nbsp;— общие счета, кешбэк на&nbsp;всех, совместные подписки и&nbsp;семейные сервисы</p>
+      </div>
+      <div class="family__item family__item--b">
+        <span class="family__plus" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 4.5V27.5M4.5 16H27.5" stroke="#C7C7C5" stroke-width="1.6" stroke-linecap="round" /></svg>
+        </span>
+        <h3 class="family__h">3&nbsp;месяца на&nbsp;проекте&nbsp;— веду всё: от&nbsp;планирования бэклога до&nbsp;ревью перед релизом</h3>
+        <p class="family__p">Наладил планирование команды из&nbsp;меня и&nbsp;ещё одного дизайнера, собрал концепцию к&nbsp;концу года и&nbsp;закрыл несколько горящих задач, которые уже на&nbsp;проде</p>
+      </div>
+      <div class="family__item family__item--c">
+        <span class="family__plus" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 4.5V27.5M4.5 16H27.5" stroke="#C7C7C5" stroke-width="1.6" stroke-linecap="round" /></svg>
+        </span>
+        <h3 class="family__h">Что дальше</h3>
+        <p class="family__p">Сейчас выстраиваю работу так, чтобы направление росло предсказуемо: приоритеты, регулярные релизы, единые паттерны семейных сценариев</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work history + contact -->
+  <section class="final" data-screen-label="Contacts">
+    <div class="work">
+      <div class="work__row">
+        <a class="work__name" href="https://www.vtb.ru/" target="_blank" rel="noopener">ВТБ<span class="work__arrow">↗</span></a>
+        <div class="work__right">
+          <span class="work__dates">2025&nbsp;— сейчас</span>
+          <span class="work__desc">ВТБ Pay, 3D Secure, семейный банк</span>
+        </div>
+      </div>
+      <div class="work__row">
+        <a class="work__name" href="https://loo.ch/" target="_blank" rel="noopener">Студия «Луч»<span class="work__arrow">↗</span></a>
+        <div class="work__right">
+          <span class="work__dates">2023&nbsp;— 2025</span>
+          <span class="work__desc">Авито и&nbsp;Mindbox</span>
+        </div>
+      </div>
+      <div class="work__row">
+        <a class="work__name" href="https://spider.ru/" target="_blank" rel="noopener">Spider Group<span class="work__arrow">↗</span></a>
+        <div class="work__right">
+          <span class="work__dates">2022&nbsp;— 2023</span>
+          <span class="work__desc">Ключавто, национальная лотерея</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact">
+      <h2 class="contact__title">По&nbsp;всем вопросам и&nbsp;предложениям&nbsp;—<br />пишите в&nbsp;телеграм</h2>
+      <a class="contact__handle" href="https://t.me/alcher_13" target="_blank" rel="noopener">@alcher_13</a>
+    </div>
+  </section>
+
+  <!-- Case modal -->
+  <div class="modal" id="caseModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="modal__close" id="modalClose" type="button" aria-label="Закрыть">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+        <path d="M5 5L29 29M29 5L5 29" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+      </svg>
+    </button>
+    <div class="modal__center">
+      <div class="modal__inner" id="modalInner">
+        <div class="modal__media"><img id="modalImg" alt="" /></div>
+        <div class="modal__text">
+          <h2 class="modal__title" id="modalTitle"></h2>
+          <div class="modal__body" id="modalBody"></div>
+          <a class="modal__btn" id="modalBtn" href="https://www.behance.net/alexcherkashin1/projects" target="_blank" rel="noopener">Подробно<span class="modal__btn-arrow">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Reveal the secondary elements 4 seconds after the headline is shown.
+    // Driven with timers so it runs reliably in every renderer.
+    (function () {
+      var DELAY = 500;        // delay before the reveal sequence starts after the loader hides
+      var FADE = 900;         // fade-in length for header / bio / photo
+      var LINE_GROW = 1000;   // grid lines grow over 1s
+      var fadeEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+      var lineEls = Array.prototype.slice.call(document.querySelectorAll('.grid__line'));
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function easeOut(p) { return 1 - (1 - p) * (1 - p); }
+
+      function run(duration, onFrame) {
+        var startTime = Date.now();
+        var timer = setInterval(function () {
+          var p = Math.min((Date.now() - startTime) / duration, 1);
+          onFrame(easeOut(p));
+          if (p >= 1) clearInterval(timer);
+        }, 16);
+      }
+
+      function start() {
+        if (reduce) {
+          fadeEls.forEach(function (el) { el.style.opacity = '1'; });
+          lineEls.forEach(function (el) { el.style.transform = 'scaleY(1)'; });
+          return;
+        }
+        // Header / bio / photo fade in (incl. the horizontal header rule).
+        run(FADE, function (e) {
+          fadeEls.forEach(function (el) { el.style.opacity = e.toFixed(3); });
+        });
+        // Grid lines start growing only AFTER the horizontal header rule
+        // has appeared, then extend from the top edge downward over 1s.
+        setTimeout(function () {
+          run(LINE_GROW, function (e) {
+            lineEls.forEach(function (el) { el.style.transform = 'scaleY(' + e.toFixed(4) + ')'; });
+          });
+        }, FADE);
+      }
+
+      // ----- Loading screen: count 1 → 100, then reveal the page -----
+      var LOAD_DURATION = 3800; // smooth, steady count from 1% to 100% (<= 4s)
+      var loader = document.getElementById('loader');
+      var pctEl = document.getElementById('pct');
+
+      function finishLoading() {
+        // Fade the loader out, reveal the headline smoothly, then kick off
+        // the rest of the sequence.
+        if (reduce) {
+          loader.style.display = 'none';
+          title.style.opacity = '1';
+          title.style.transform = 'none';
+          setTimeout(start, DELAY);
+          return;
+        }
+        run(450, function (e) {
+          loader.style.opacity = (1 - e).toFixed(3);
+        });
+        revealTitle();
+        setTimeout(function () {
+          loader.style.display = 'none';
+          setTimeout(start, DELAY);
+        }, 450);
+      }
+
+      // Smooth headline entrance: gentle fade + slight rise over ~1.2s.
+      var title = document.querySelector('.hero__title');
+      function revealTitle() {
+        if (reduce) {
+          title.style.opacity = '1';
+          title.style.transform = 'none';
+          return;
+        }
+        run(1200, function (e) {
+          title.style.opacity = e.toFixed(3);
+          title.style.transform = 'translateY(' + (20 * (1 - e)).toFixed(1) + 'px)';
+        });
+      }
+
+      function runLoader() {
+        var startTime = Date.now();
+        var timer = setInterval(function () {
+          var p = Math.min((Date.now() - startTime) / LOAD_DURATION, 1);
+          var value = Math.max(1, Math.round(p * 100)); // linear → smooth, even pace
+          pctEl.textContent = value;
+          if (p >= 1) {
+            clearInterval(timer);
+            pctEl.textContent = 100;
+            setTimeout(finishLoading, 250);
+          }
+        }, 16);
+      }
+
+      runLoader();
+
+      // ----- Smooth inertial scrolling (mouse wheel) -----
+      // The wheel is intercepted and the page glides to the target with an
+      // ease-out, giving a heavy, fluid feel. Touch devices, pinch-zoom,
+      // reduced-motion and the open case modal keep native behavior.
+      (function () {
+        var finePointer = window.matchMedia('(pointer: fine)').matches;
+        if (reduce || !finePointer) return;
+
+        var target = window.scrollY;
+        var current = window.scrollY;
+        var rafId = null;
+        var EASE = 0.075; // lower = longer, smoother glide
+
+        function maxScroll() {
+          return document.documentElement.scrollHeight - window.innerHeight;
+        }
+
+        function glide() {
+          current += (target - current) * EASE;
+          if (Math.abs(target - current) < 0.5) {
+            current = target;
+            window.scrollTo(0, Math.round(current));
+            rafId = null;
+            return;
+          }
+          window.scrollTo(0, Math.round(current));
+          rafId = requestAnimationFrame(glide);
+        }
+
+        window.addEventListener('wheel', function (e) {
+          if (document.body.classList.contains('modal-open')) return; // modal scrolls natively
+          if (e.ctrlKey) return; // pinch-zoom gesture
+          e.preventDefault();
+          var delta = e.deltaY;
+          if (e.deltaMode === 1) delta *= 16;       // lines → px
+          if (e.deltaMode === 2) delta *= window.innerHeight; // pages → px
+          target = Math.min(Math.max(target + delta, 0), maxScroll());
+          if (rafId === null) {
+            current = window.scrollY;
+            rafId = requestAnimationFrame(glide);
+          }
+        }, { passive: false });
+
+        // Re-sync when the user scrolls another way (scrollbar, keys, touch)
+        window.addEventListener('scroll', function () {
+          if (rafId === null) {
+            target = window.scrollY;
+            current = window.scrollY;
+          }
+        }, { passive: true });
+      })();
+
+      // ----- Burger menu (mobile) -----
+      var burgerBtn = document.getElementById('burgerBtn');
+      var headerEl = document.querySelector('.header');
+      if (burgerBtn && headerEl) {
+        burgerBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var open = headerEl.classList.toggle('menu-open');
+          burgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        // close after tapping a link or anywhere outside the header
+        Array.prototype.forEach.call(document.querySelectorAll('.nav__link'), function (link) {
+          link.addEventListener('click', function () {
+            headerEl.classList.remove('menu-open');
+            burgerBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+        document.addEventListener('click', function (e) {
+          if (headerEl.classList.contains('menu-open') && !headerEl.contains(e.target)) {
+            headerEl.classList.remove('menu-open');
+            burgerBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // ----- Keep an exact 200px gap between the avatar and the about block -----
+      var photo = document.querySelector('.photo');
+      var about = document.querySelector('.about');
+      var centerLine = document.querySelector('.grid__line--center');
+      var centerLine2 = document.querySelector('.grid__line--center2');
+      var mindboxRow = document.querySelector('.cases__row--one');
+      var familyBlock = document.querySelector('.family');
+
+      function syncCenterLine() {
+        // The center divider splits the two-column rows, then STOPS at the
+        // Mindbox row and RESUMES below it — but only through the family block.
+        // It ends at the top of the work list (the family block's bottom line).
+        if (!mindboxRow) return;
+        var rect = mindboxRow.getBoundingClientRect();
+        var rowTop = rect.top + window.scrollY;
+        var rowBottom = rect.bottom + window.scrollY;
+        if (centerLine) {
+          centerLine.style.bottom = 'auto';
+          centerLine.style.height = Math.max(0, rowTop - 100) + 'px';
+        }
+        if (centerLine2 && familyBlock) {
+          var famBottom = familyBlock.getBoundingClientRect().bottom + window.scrollY;
+          centerLine2.style.top = rowBottom + 'px';
+          centerLine2.style.bottom = 'auto';
+          centerLine2.style.height = Math.max(0, famBottom - rowBottom) + 'px';
+        }
+      }
+
+      function syncAboutGap() {
+        if (!photo || !about) return;
+        about.style.marginTop = '0px';
+        // Mobile: the hero is a natural flow column (photo → title → bio),
+        // the avatar no longer hangs below the headline — keep natural flow.
+        if (window.matchMedia('(max-width: 768px)').matches) {
+          syncCenterLine();
+          return;
+        }
+        var avatarBottom = photo.getBoundingClientRect().bottom + window.scrollY;
+        var aboutTop = about.getBoundingClientRect().top + window.scrollY;
+        var shift = (avatarBottom + 200) - aboutTop;
+        about.style.marginTop = shift + 'px';
+        syncCenterLine();
+      }
+      window.addEventListener('load', syncAboutGap);
+      window.addEventListener('resize', syncAboutGap);
+      syncAboutGap();
+
+      // ----- About text: fade in from transparency with a top→bottom wipe,
+      // triggered when the user scrolls it into view -----
+      var aboutText = document.querySelector('.about__text');
+      if (aboutText && !reduce) {
+        // initial hidden state
+        var FEATHER = 'linear-gradient(to bottom, #000 70%, transparent 100%)';
+        aboutText.style.opacity = '0';
+        aboutText.style.webkitMaskImage = FEATHER;
+        aboutText.style.maskImage = FEATHER;
+        aboutText.style.webkitMaskRepeat = 'no-repeat';
+        aboutText.style.maskRepeat = 'no-repeat';
+        aboutText.style.webkitMaskPosition = 'top';
+        aboutText.style.maskPosition = 'top';
+        aboutText.style.webkitMaskSize = '100% 0%';
+        aboutText.style.maskSize = '100% 0%';
+
+        var aboutRevealed = false;
+        function revealAbout() {
+          if (aboutRevealed) return;
+          aboutRevealed = true;
+          run(1200, function (e) {
+            aboutText.style.opacity = e.toFixed(3);
+            var size = (e * 220).toFixed(1); // 0% → 220% : wipe top → bottom
+            aboutText.style.webkitMaskSize = '100% ' + size + '%';
+            aboutText.style.maskSize = '100% ' + size + '%';
+          });
+          // remove the mask once fully revealed so nothing stays clipped
+          setTimeout(function () {
+            aboutText.style.webkitMaskImage = 'none';
+            aboutText.style.maskImage = 'none';
+          }, 1300);
+        }
+
+        // Trigger when the text scrolls into view. A scroll listener + rect
+        // check is used (rather than IntersectionObserver) so it fires
+        // reliably in every rendering environment.
+        function checkAbout() {
+          if (aboutRevealed) return;
+          var top = aboutText.getBoundingClientRect().top;
+          if (top < window.innerHeight * 0.82) {
+            revealAbout();
+            window.removeEventListener('scroll', checkAbout);
+          }
+        }
+        window.addEventListener('scroll', checkAbout, { passive: true });
+        window.addEventListener('resize', checkAbout);
+        checkAbout(); // in case it's already in view on load
+      }
+
+      // ----- Avatar parallax: drifts gently toward the cursor (max 8px) -----
+      if (photo && !reduce) {
+        var MAX = 8;
+        window.addEventListener('mousemove', function (e) {
+          var nx = e.clientX / window.innerWidth - 0.5;   // -0.5 … 0.5
+          var ny = e.clientY / window.innerHeight - 0.5;
+          photo.style.transform =
+            'translate(' + (nx * 2 * MAX).toFixed(1) + 'px, ' + (ny * 2 * MAX).toFixed(1) + 'px)';
+        });
+        document.addEventListener('mouseleave', function () {
+          photo.style.transform = 'translate(0, 0)';
+        });
+      }
+
+      // ----- Case modal -----
+      var CASES = {
+        'vtb-pay': {
+          img: 'img/case-vtb-pay.png',
+          alt: 'ВТБ Pay',
+          layout: 'media-left',
+          href: 'case-vtb-pay.html',
+          title: 'ВТБ Pay\u00A0— оплата смартфоном',
+          body: [
+            'Единственный дизайнер продукта. За\u00A0год спроектировал десяток платёжных сценариев, среди них оплата со\u00A0счёта другого банка и\u00A0массовая токенизация карт.',
+            'За\u00A0время работы продукт заметно вырос. Я\u00A0отвечал за\u00A0то, чтобы сценарии оставались понятными, а\u00A0лишних шагов становилось меньше'
+          ]
+        },
+        'avito': {
+          img: 'img/case-avito.png',
+          alt: 'Авито Подработка',
+          layout: 'media-right',
+          href: 'case-avito.html',
+          title: 'Авито Подработка\u00A0— сервис подработки',
+          body: [
+            'Был единственным дизайнером от\u00A0студии «Луч», полностью интегрированным в\u00A0команду Авито. Отвечал за\u00A0флоу верификации пользователей (KYC) и\u00A0карточку смены\u00A0— от\u00A0выхода на\u00A0смену до\u00A0выплаты.',
+            'Помогал собрать и\u00A0запустить новый сервис с\u00A0нуля. В\u00A0условиях быстрого запуска наладил ревью готовых интерфейсов и\u00A0планирование задач.'
+          ]
+        },
+        '3dsecure': {
+          img: 'img/case-3dsecure.png',
+          alt: '3D Secure',
+          layout: 'media-left',
+          href: 'case-3dsecure.html',
+          title: '3D Secure\u00A0— подтверждение оплаты',
+          body: [
+            'Полный редизайн страницы подтверждения платежа\u00A0— клиенты ВТБ видят её при\u00A0оплате картой в\u00A0интернете.',
+            'Дизайн в\u00A0задачу не\u00A0входил: команда вела техническую доработку, а\u00A0по\u00A0странице копились жалобы. Предложил переработать её сам\u00A0— и\u00A0довёл редизайн до\u00A0прода.'
+          ]
+        },
+        'loto': {
+          img: 'img/case-loto.png',
+          alt: 'Приложение национальной лотереи',
+          layout: 'media-right',
+          href: 'case-loto.html',
+          title: 'Приложение национальной лотереи\u00A0— iOS и\u00A0Android',
+          body: [
+            'UX/UI-дизайнер мобильного приложения. Спроектировал ключевые пользовательские флоу: покупку билетов, оплату, кошелёк с\u00A0пополнением и\u00A0выводом, заполнение документов для\u00A0верификации.',
+            'Собрал UI-кит и\u00A0развёл поведение элементов под\u00A0iOS и\u00A0Android'
+          ]
+        },
+        'mindbox': {
+          img: 'img/case-mindbox.png',
+          alt: 'Mindbox',
+          layout: 'stacked',
+          href: 'case-mindbox.html',
+          title: 'Mindbox\u00A0— инструменты для\u00A0маркетинга',
+          body: [
+            'Продуктовый дизайнер B2B-инструментов платформы. Проектировал сложные интерфейсы настроек, вёл юзабилити-тесты, развивал дизайн-систему.',
+            'Перенёс настройку рекламных интеграций в\u00A0единое место\u00A0— обращения в\u00A0поддержку по\u00A0теме упали на\u00A020% за\u00A0первый месяц.'
+          ]
+        }
+      };
+
+      var modal = document.getElementById('caseModal');
+      var modalInner = document.getElementById('modalInner');
+      var modalImg = document.getElementById('modalImg');
+      var modalTitle = document.getElementById('modalTitle');
+      var modalBody = document.getElementById('modalBody');
+      var modalBtn = document.getElementById('modalBtn');
+      var BEHANCE = 'https://www.behance.net/alexcherkashin1/projects';
+      var lastFocused = null;
+
+      function openCase(key) {
+        var data = CASES[key];
+        if (!data) return;
+        lastFocused = document.activeElement;
+        modalImg.src = data.img;
+        modalImg.alt = data.alt;
+        modalTitle.textContent = data.title;
+        // «Подробно» → внутренняя страница кейса, если она есть; иначе Behance
+        if (data.href) {
+          modalBtn.href = data.href;
+          modalBtn.removeAttribute('target');
+          modalBtn.removeAttribute('rel');
+        } else {
+          modalBtn.href = BEHANCE;
+          modalBtn.setAttribute('target', '_blank');
+          modalBtn.setAttribute('rel', 'noopener');
+        }
+        modalBody.innerHTML = '';
+        data.body.forEach(function (para) {
+          var p = document.createElement('p');
+          p.textContent = para;
+          modalBody.appendChild(p);
+        });
+        modal.classList.remove('modal--media-left', 'modal--media-right', 'modal--stacked');
+        modal.classList.add('modal--' + data.layout);
+        document.body.classList.add('modal-open');
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.getElementById('modalClose').focus();
+      }
+
+      function closeCase() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        if (lastFocused && lastFocused.focus) lastFocused.focus();
+      }
+
+      Array.prototype.forEach.call(document.querySelectorAll('.case'), function (el) {
+        el.addEventListener('click', function () {
+          openCase(el.getAttribute('data-case'));
+        });
+        el.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openCase(el.getAttribute('data-case'));
+          }
+        });
+      });
+
+      document.getElementById('modalClose').addEventListener('click', closeCase);
+      modal.addEventListener('click', function (e) {
+        // click on the dimmed backdrop (not the content) closes
+        if (e.target === modal) closeCase();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeCase();
+      });
+    })();
+  </script>
+</body>
+</html>

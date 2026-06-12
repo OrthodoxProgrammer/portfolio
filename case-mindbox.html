@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mindbox — инструменты для маркетинга · Alcher</title>
+  <meta name="description" content="Кейс: интеграции с рекламными кабинетами, конструктор email-писем и вклад в дизайн-систему Mindbox" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/case.css" />
+  <style>
+    /* Картинки никогда не касаются вертикальных линий:
+       минимум 20px от краёв изображения до линий на любом разрешении.
+       Ширина уменьшается, высота auto — без искажений. */
+    .band img {
+      width: calc(100% - 40px);
+    }
+  </style>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+</head>
+<body>
+  <!-- Vertical grid lines -->
+  <div class="grid grid--static" aria-hidden="true">
+    <span class="grid__line grid__line--left"></span>
+    <span class="grid__line grid__line--right"></span>
+  </div>
+
+  <!-- Header -->
+  <header class="header header--static" data-screen-label="Case header">
+    <a class="logo" href="index.html" aria-label="Alcher — на главную"><img src="img/logo.svg" alt="Alcher" /></a>
+    <nav class="nav" id="siteNav">
+      <a class="nav__link" href="https://t.me/alcher_13" target="_blank" rel="noopener">Telegram<span class="nav__arrow">↗</span></a>
+      <a class="nav__link" href="https://t.me/uxrefs" target="_blank" rel="noopener">tg-канал<span class="nav__arrow">↗</span></a>
+      <a class="nav__link" href="https://www.linkedin.com/in/alex-cherkashin-13264a322/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B8n7CG3OTSFaOwglChkOGoA%3D%3D" target="_blank" rel="noopener">LinkedIn<span class="nav__arrow">↗</span></a>
+      <a class="nav__link" href="https://hh.ru/resume/7c943d1eff08f6c3e50039ed1f474d46557036" target="_blank" rel="noopener">НН профиль<span class="nav__arrow">↗</span></a>
+    </nav>
+    <button class="burger" id="burgerBtn" type="button" aria-label="Меню" aria-expanded="false" aria-controls="siteNav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+  <span class="header__rule" aria-hidden="true" style="opacity: 1;"></span>
+
+  <!-- Hero -->
+  <section class="chero" data-screen-label="Case hero">
+    <p class="chero__meta rv">2023–2024 · Web · B2B · Дизайн-система</p>
+    <h1 class="chero__title rv">Mindbox&nbsp;— инструменты для&nbsp;маркетинга</h1>
+    <p class="chero__lead rv">Снизили обращения в&nbsp;поддержку по&nbsp;теме «Интеграции» на&nbsp;20% за&nbsp;первый месяц. Лично вёл исследования и&nbsp;юзабилити-тесты, развивал дизайн-систему.</p>
+  </section>
+
+  <!-- Story -->
+  <section class="story" data-screen-label="Story">
+    <div class="story__row rv">
+      <h2 class="story__h">Что это</h2>
+      <p class="story__p">Mindbox&nbsp;— крупная платформа автоматизации маркетинга. Работал над&nbsp;внутренними B2B-инструментами платформы: сложные интерфейсы настроек, с&nbsp;которыми ежедневно работают маркетологи.</p>
+    </div>
+    <div class="story__row rv">
+      <h2 class="story__h">Моя роль</h2>
+      <p class="story__p">Продуктовый дизайнер. UX-проектирование, прототипы, личное проведение юзабилити-тестов, проработка и&nbsp;приёмка, вклад в&nbsp;дизайн-систему.</p>
+    </div>
+  </section>
+
+  <!-- Project 1: Integrations -->
+  <section class="proj" data-screen-label="Integrations project">
+    <h2 class="proj__title rv">Интеграции с&nbsp;рекламными кабинетами</h2>
+    <div class="proj__intro rv">
+      <p class="proj__p">Перенёс настройку всех интеграций (Яндекс, VK Реклама и&nbsp;др.) в&nbsp;одно место и&nbsp;убрал стороннее «покрашенное» решение. Проработал каждый рекламный кабинет с&nbsp;его ограничениями, привёл к&nbsp;единой логике с&nbsp;остальной платформой.</p>
+      <p class="proj__p proj__p--result"><strong>Результат:</strong> −20% обращений в&nbsp;поддержку по&nbsp;теме за&nbsp;первый месяц; бизнес ушёл от&nbsp;трат на&nbsp;сторонний сервис.</p>
+    </div>
+  </section>
+
+  <figure class="band rv" data-screen-label="Integrations list">
+    <img class="frame" src="img/mindbox/int-02-list.png" alt="Список всех интеграций платформы со статусами" style="object-fit: cover" />
+    <figcaption class="band__caption">Все интеграции платформы&nbsp;— в&nbsp;одном списке: статусы, точки интеграции, бренды</figcaption>
+  </figure>
+
+  <figure class="band rv" data-screen-label="VK integration settings">
+    <img class="frame" src="img/mindbox/int-01-vk-settings.png" alt="Экран настройки интеграции с VK Рекламой" />
+    <figcaption class="band__caption">Настройка интеграции с&nbsp;VK Рекламой: подключение, бренд и&nbsp;логика передачи данных&nbsp;— в&nbsp;паттернах платформы</figcaption>
+  </figure>
+
+  <!-- Project 2: Email builder -->
+  <section class="proj" data-screen-label="Email builder project">
+    <h2 class="proj__title rv">Конструктор email-писем</h2>
+    <div class="proj__intro rv">
+      <p class="proj__p">Спроектировал собственный конструктор писем вместо ограниченного стороннего: работа с&nbsp;канвой, drag-and-drop блоков, настройки элементов. Решил нетривиальные задачи&nbsp;— поведение канвы на&nbsp;маленьких экранах, понятная настройка отступов. Добавил 3&nbsp;новых компонента в&nbsp;дизайн-систему, 2&nbsp;доработал.</p>
+      <p class="proj__p proj__p--result"><strong>Результат:</strong> запустили в&nbsp;прод, заменили сторонний сервис собственным решением.</p>
+    </div>
+  </section>
+
+  <figure class="band rv" data-screen-label="Canvas and drag-and-drop">
+    <div class="band__stack">
+      <img class="frame" src="img/mindbox/email-01-canvas-empty.png" alt="Пустая канва конструктора — перенос блока «Шапка» из библиотеки" />
+      <img class="frame" src="img/mindbox/email-02-canvas-drag.png" alt="Перенос блока в собранное письмо — зона «Добавить сюда»" />
+    </div>
+    <figcaption class="band__caption">Канва и&nbsp;drag-and-drop: блоки переносятся из&nbsp;библиотеки прямо в&nbsp;письмо, зона вставки подсвечивается</figcaption>
+  </figure>
+
+  <figure class="band rv" data-screen-label="Standard blocks">
+    <img class="frame" src="img/mindbox/email-03-standard-blocks.png" alt="Библиотека стандартных блоков и пустая канва шириной 600 px" />
+    <figcaption class="band__caption">Библиотека стандартных блоков; канва фиксирует ширину письма 600&nbsp;px&nbsp;— поведение на&nbsp;маленьких экранах было отдельной задачей</figcaption>
+  </figure>
+
+  <figure class="band rv" data-screen-label="Block settings">
+    <div class="band__stack">
+      <img class="frame" src="img/mindbox/email-04-block-settings.png" alt="Настройки блока «Продукты»: строки, колонки, наполнение карточек" />
+      <img class="frame" src="img/mindbox/email-05-header-paddings.png" alt="Настройки блока «Хэдер»: отступы и расположение" />
+    </div>
+    <figcaption class="band__caption">Настройки выбранного блока: наполнение карточек, фон, отступы и&nbsp;расположение</figcaption>
+  </figure>
+
+  <figure class="band band--narrow rv" data-screen-label="Paddings panel">
+    <img class="frame" src="img/mindbox/email-06-paddings-panel.png" alt="Панель настройки отступов блока со схемой" />
+    <figcaption class="band__caption">Понятная настройка отступов: схема показывает, какой именно отступ сейчас меняешь</figcaption>
+  </figure>
+
+  <!-- Project 3: Design system -->
+  <section class="proj" data-screen-label="Design system project">
+    <h2 class="proj__title rv">Вклад в&nbsp;дизайн-систему</h2>
+    <div class="proj__intro rv">
+      <p class="proj__p">Компоненты для&nbsp;конструктора писем делал сразу как часть дизайн-системы: документация в&nbsp;UI-библиотеке, анатомия, размеры и&nbsp;состояния&nbsp;— чтобы команда могла переиспользовать их без&nbsp;вопросов.</p>
+    </div>
+  </section>
+
+  <figure class="band band--narrow rv" data-screen-label="Element paddings spec">
+    <img class="frame" src="img/mindbox/ds-01-element-paddings.png" alt="Спека компонента настройки отступов элемента" />
+    <figcaption class="band__caption">Компонент настройки отступов элемента: схема в&nbsp;спеке и&nbsp;как он выглядит у&nbsp;маркетолога</figcaption>
+  </figure>
+
+  <figure class="band rv" data-screen-label="DS docs">
+    <img src="img/mindbox/ds-02-docs.png" alt="Документация компонентов в UI-библиотеке Mindbox" />
+    <figcaption class="band__caption">Документация в&nbsp;UI-библиотеке: color picker, color preview, color palette и&nbsp;конструкция компонента</figcaption>
+  </figure>
+
+  <figure class="band rv" data-screen-label="Color picker anatomy">
+    <img src="img/mindbox/ds-03-anatomy.png" alt="Анатомия компонента color picker" />
+    <figcaption class="band__caption">Анатомия color picker: превью цвета, инпут с&nbsp;hex-кодом, кнопка копирования и&nbsp;палитра</figcaption>
+  </figure>
+
+  <figure class="band rv" data-screen-label="Color picker sizes">
+    <img class="frame" src="img/mindbox/ds-04-sizes.png" alt="Размеры и отступы компонента color picker" />
+    <figcaption class="band__caption">Размеры и&nbsp;отступы: два роста контрола, три конфигурации&nbsp;— с&nbsp;лейблом, с&nbsp;кнопкой копирования и&nbsp;только пикер</figcaption>
+  </figure>
+
+  <!-- Result -->
+  <section class="cresult" data-screen-label="Result">
+    <p class="cresult__note rv">Результат</p>
+    <h2 class="cresult__big rv">−20% обращений в&nbsp;поддержку по&nbsp;теме «Интеграции» за&nbsp;первый месяц</h2>
+    <p class="cresult__sub rv">Конструктор писем запустили в&nbsp;прод&nbsp;— собственное решение заменило сторонний сервис</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="cfooter" data-screen-label="Case footer">
+    <a class="cfooter__link cfooter__back" href="index.html">← Все кейсы</a>
+    <a class="cfooter__link" href="https://t.me/alcher_13" target="_blank" rel="noopener">Telegram<span class="nav__arrow">↗</span></a>
+  </footer>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ----- Reveal on scroll -----
+      var rvEls = Array.prototype.slice.call(document.querySelectorAll('.rv'));
+      function checkReveals() {
+        var vh = window.innerHeight;
+        rvEls.forEach(function (el) {
+          if (el.classList.contains('rv--in')) return;
+          if (el.getBoundingClientRect().top < vh * 0.88) {
+            el.classList.add('rv--in');
+          }
+        });
+      }
+      window.addEventListener('scroll', checkReveals, { passive: true });
+      window.addEventListener('resize', checkReveals);
+      window.addEventListener('load', checkReveals);
+      checkReveals();
+
+      // ----- Smooth inertial scrolling (mouse wheel) -----
+      (function () {
+        var finePointer = window.matchMedia('(pointer: fine)').matches;
+        if (reduce || !finePointer) return;
+
+        var target = window.scrollY;
+        var current = window.scrollY;
+        var rafId = null;
+        var EASE = 0.075;
+
+        function maxScroll() {
+          return document.documentElement.scrollHeight - window.innerHeight;
+        }
+
+        function glide() {
+          current += (target - current) * EASE;
+          if (Math.abs(target - current) < 0.5) {
+            current = target;
+            window.scrollTo(0, Math.round(current));
+            rafId = null;
+            return;
+          }
+          window.scrollTo(0, Math.round(current));
+          rafId = requestAnimationFrame(glide);
+        }
+
+        window.addEventListener('wheel', function (e) {
+          if (e.ctrlKey) return;
+          e.preventDefault();
+          var delta = e.deltaY;
+          if (e.deltaMode === 1) delta *= 16;
+          if (e.deltaMode === 2) delta *= window.innerHeight;
+          target = Math.min(Math.max(target + delta, 0), maxScroll());
+          if (rafId === null) {
+            current = window.scrollY;
+            rafId = requestAnimationFrame(glide);
+          }
+        }, { passive: false });
+
+        window.addEventListener('scroll', function () {
+          if (rafId === null) {
+            target = window.scrollY;
+            current = window.scrollY;
+          }
+        }, { passive: true });
+      })();
+
+      // ----- Burger menu (mobile) -----
+      var burgerBtn = document.getElementById('burgerBtn');
+      var headerEl = document.querySelector('.header');
+      if (burgerBtn && headerEl) {
+        burgerBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var open = headerEl.classList.toggle('menu-open');
+          burgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('.nav__link'), function (link) {
+          link.addEventListener('click', function () {
+            headerEl.classList.remove('menu-open');
+            burgerBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+        document.addEventListener('click', function (e) {
+          if (headerEl.classList.contains('menu-open') && !headerEl.contains(e.target)) {
+            headerEl.classList.remove('menu-open');
+            burgerBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    })();
+  </script>
+  <script src="js/lightbox.js"></script>
+</body>
+</html>

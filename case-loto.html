@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loto — приложение национальной лотереи · Alcher</title>
+  <meta name="description" content="Кейс: приложение национальной лотереи на iOS и Android — покупка билетов, оплата, кошелёк, верификация" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/case.css" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+</head>
+<body>
+  <!-- Vertical grid lines -->
+  <div class="grid grid--static" aria-hidden="true">
+    <span class="grid__line grid__line--left"></span>
+    <span class="grid__line grid__line--right"></span>
+  </div>
+
+  <!-- Header -->
+  <header class="header header--static" data-screen-label="Case header">
+    <a class="logo" href="index.html" aria-label="Alcher — на главную"><img src="img/logo.svg" alt="Alcher" /></a>
+    <nav class="nav" id="siteNav">
+      <a class="nav__link" href="https://t.me/alcher_13" target="_blank" rel="noopener">Telegram<span class="nav__arrow">↗</span></a>
+      <a class="nav__link" href="https://t.me/uxrefs" target="_blank" rel="noopener">tg-канал<span class="nav__arrow">↗</span></a>
+      <a class="nav__link" href="https://www.linkedin.com/in/alex-cherkashin-13264a322/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B8n7CG3OTSFaOwglChkOGoA%3D%3D" target="_blank" rel="noopener">LinkedIn<span class="nav__arrow">↗</span></a>
+      <a class="nav__link" href="https://hh.ru/resume/7c943d1eff08f6c3e50039ed1f474d46557036" target="_blank" rel="noopener">НН профиль<span class="nav__arrow">↗</span></a>
+    </nav>
+    <button class="burger" id="burgerBtn" type="button" aria-label="Меню" aria-expanded="false" aria-controls="siteNav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+  <span class="header__rule" aria-hidden="true" style="opacity: 1;"></span>
+
+  <!-- Hero -->
+  <section class="chero" data-screen-label="Case hero">
+    <p class="chero__meta rv">2022–2023 · iOS и Android · Лотереи и платежи</p>
+    <h1 class="chero__title rv">Приложение национальной лотереи</h1>
+    <p class="chero__lead rv">Спроектировал ключевые флоу: покупку билетов, оплату, кошелёк, верификацию. Собрал UI-кит и&nbsp;развёл поведение элементов под&nbsp;iOS и&nbsp;Android.</p>
+  </section>
+
+  <!-- Story -->
+  <section class="story" data-screen-label="Story">
+    <div class="story__row rv">
+      <h2 class="story__h">Что это</h2>
+      <p class="story__p">Приложение национальной лотереи: человек выбирает числа, покупает билеты и&nbsp;получает выигрыш на&nbsp;кошелёк внутри приложения.</p>
+    </div>
+    <div class="story__row rv">
+      <h2 class="story__h">Моя роль</h2>
+      <p class="story__p">UX/UI-дизайнер мобильного приложения. Собрал UI-кит и&nbsp;развёл поведение элементов под&nbsp;iOS и&nbsp;Android.</p>
+    </div>
+  </section>
+
+  <!-- Tickets -->
+  <figure class="band rv" data-screen-label="Ticket selection">
+    <h2 class="band__h">Выбор билетов</h2>
+    <div class="band__phones band__phones--lg">
+      <img src="img/loto/01-bilety-vybor-chisel.png" alt="Ручной выбор чисел для билета" />
+      <img src="img/loto/02-bilety-podskazki-kombinacii.png" alt="Шторка с подсказками по комбинациям: предыдущий тираж, часто выпадающие и давно не выпадавшие числа" />
+      <img src="img/loto/03-bilety-lotonabor.png" alt="ЛотоНабор: готовые билеты со случайными комбинациями, количество регулируется слайдером" />
+    </div>
+    <figcaption class="band__caption">Числа можно выбрать вручную&nbsp;— с&nbsp;подсказками: предыдущий тираж, часто выпадающие и&nbsp;давно не&nbsp;выпадавшие числа. Кто не&nbsp;хочет выбирать сам&nbsp;— берёт ЛотоНабор: готовые билеты со&nbsp;случайными комбинациями, количество регулируется слайдером</figcaption>
+  </figure>
+
+  <!-- Payment -->
+  <figure class="band rv" data-screen-label="Payment">
+    <h2 class="band__h">Оплата</h2>
+    <div class="band__phones">
+      <img src="img/loto/05-oplata-shtorka.png" alt="Шторка оплаты: баланс кошелька и два частых способа" />
+      <img src="img/loto/06-oplata-vse-sposoby.png" alt="Все способы оплаты: кошелёк, банковская карта, баланс телефона, бонусы" />
+      <img src="img/loto/04-oplata-zagruzka.png" alt="Состояние загрузки во время оплаты" />
+      <img src="img/loto/07-oplata-uspeh-bilet.png" alt="Экран успеха с купленным билетом: номера, тираж, сумма" />
+    </div>
+    <figcaption class="band__caption">Четыре способа оплаты: кошелёк, банковская карта, баланс телефона, бонусы. В&nbsp;шторке сразу видны баланс и&nbsp;два частых способа, остальные&nbsp;— за&nbsp;«Все способы». После покупки человек видит билет целиком: номера, тираж, сумму</figcaption>
+  </figure>
+
+  <!-- Wallet -->
+  <figure class="band rv" data-screen-label="Wallet">
+    <h2 class="band__h">Кошелёк</h2>
+    <div class="band__phones band__phones--lg">
+      <img src="img/loto/08-koshelek.png" alt="Главная кошелька: баланс, бонусы, вывод средств" />
+    </div>
+    <figcaption class="band__caption">Кошелёк держит три сущности: баланс для&nbsp;покупок, бонусы и&nbsp;вывод. Выводить можно только выигрыш&nbsp;— это ограничение нужно было объяснить прямо на&nbsp;экране, чтобы человек не&nbsp;решил, что его деньги застряли</figcaption>
+  </figure>
+
+  <!-- Profile and verification -->
+  <figure class="band rv" data-screen-label="Profile and verification">
+    <h2 class="band__h">Профиль и&nbsp;верификация</h2>
+    <div class="band__phones band__phones--lg">
+      <img src="img/loto/09-profil-verifikaciya.png" alt="Профиль: данные, подача документов на верификацию, VIP-статус" />
+    </div>
+    <figcaption class="band__caption">Крупный выигрыш нельзя получить без документов. Подача документов вынесена в&nbsp;профиль&nbsp;— человек проходит верификацию заранее, а&nbsp;не&nbsp;в&nbsp;момент, когда уже ждёт деньги</figcaption>
+  </figure>
+
+  <!-- Footer -->
+  <footer class="cfooter" data-screen-label="Case footer">
+    <a class="cfooter__link cfooter__back" href="index.html">← Все кейсы</a>
+    <a class="cfooter__link" href="https://t.me/alcher_13" target="_blank" rel="noopener">Telegram<span class="nav__arrow">↗</span></a>
+  </footer>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ----- Reveal on scroll -----
+      var rvEls = Array.prototype.slice.call(document.querySelectorAll('.rv'));
+      function checkReveals() {
+        var vh = window.innerHeight;
+        rvEls.forEach(function (el) {
+          if (el.classList.contains('rv--in')) return;
+          if (el.getBoundingClientRect().top < vh * 0.88) {
+            el.classList.add('rv--in');
+          }
+        });
+      }
+      window.addEventListener('scroll', checkReveals, { passive: true });
+      window.addEventListener('resize', checkReveals);
+      window.addEventListener('load', checkReveals);
+      checkReveals();
+
+      // ----- Smooth inertial scrolling (mouse wheel) -----
+      (function () {
+        var finePointer = window.matchMedia('(pointer: fine)').matches;
+        if (reduce || !finePointer) return;
+
+        var target = window.scrollY;
+        var current = window.scrollY;
+        var rafId = null;
+        var EASE = 0.075;
+
+        function maxScroll() {
+          return document.documentElement.scrollHeight - window.innerHeight;
+        }
+
+        function glide() {
+          current += (target - current) * EASE;
+          if (Math.abs(target - current) < 0.5) {
+            current = target;
+            window.scrollTo(0, Math.round(current));
+            rafId = null;
+            return;
+          }
+          window.scrollTo(0, Math.round(current));
+          rafId = requestAnimationFrame(glide);
+        }
+
+        window.addEventListener('wheel', function (e) {
+          if (e.ctrlKey) return;
+          e.preventDefault();
+          var delta = e.deltaY;
+          if (e.deltaMode === 1) delta *= 16;
+          if (e.deltaMode === 2) delta *= window.innerHeight;
+          target = Math.min(Math.max(target + delta, 0), maxScroll());
+          if (rafId === null) {
+            current = window.scrollY;
+            rafId = requestAnimationFrame(glide);
+          }
+        }, { passive: false });
+
+        window.addEventListener('scroll', function () {
+          if (rafId === null) {
+            target = window.scrollY;
+            current = window.scrollY;
+          }
+        }, { passive: true });
+      })();
+
+      // ----- Burger menu (mobile) -----
+      var burgerBtn = document.getElementById('burgerBtn');
+      var headerEl = document.querySelector('.header');
+      if (burgerBtn && headerEl) {
+        burgerBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var open = headerEl.classList.toggle('menu-open');
+          burgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('.nav__link'), function (link) {
+          link.addEventListener('click', function () {
+            headerEl.classList.remove('menu-open');
+            burgerBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+        document.addEventListener('click', function (e) {
+          if (headerEl.classList.contains('menu-open') && !headerEl.contains(e.target)) {
+            headerEl.classList.remove('menu-open');
+            burgerBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    })();
+  </script>
+  <script src="js/lightbox.js"></script>
+</body>
+</html>
