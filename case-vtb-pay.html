@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ВТБ Pay — оплата смартфоном · Alcher</title>
-  <meta name="description" content="Кейс: ВТБ Pay — бесконтактная оплата смартфоном на Android. Сценарий оплаты со счёта любого банка" />
+  <meta name="description" content="Кейс: ВТБ Pay — бесконтактная оплата смартфоном на Android. Роль единственного дизайнера продукта и виджет на главной ВТБ Онлайн" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
@@ -41,40 +41,41 @@
   <section class="chero" data-screen-label="Case hero">
     <p class="chero__meta rv">2025–2026 · Android · Платежи</p>
     <h1 class="chero__title rv">ВТБ Pay&nbsp;— оплата смартфоном</h1>
-    <p class="chero__lead rv">Клиент платит смартфоном у&nbsp;кассы&nbsp;— со&nbsp;счёта ВТБ или любого другого банка. Ниже весь сценарий подключения счёта другого банка: он&nbsp;проходит через все основные части сервиса.</p>
+    <p class="chero__lead rv">Сервис бесконтактной оплаты на&nbsp;Android: клиент прикладывает телефон к&nbsp;терминалу и&nbsp;платит.</p>
   </section>
 
   <!-- Story -->
   <section class="story" data-screen-label="Story">
     <div class="story__row rv">
-      <h2 class="story__h">Что это</h2>
-      <p class="story__p">ВТБ Pay&nbsp;— сервис бесконтактной оплаты смартфоном на&nbsp;Android: клиент прикладывает телефон к&nbsp;терминалу, как раньше с&nbsp;Google Pay. Платить можно картой ВТБ или со&nbsp;счёта другого банка&nbsp;— деньги подтянутся по&nbsp;СБП в&nbsp;момент покупки.</p>
+      <h2 class="story__h">Моя роль</h2>
+      <p class="story__p">Я&nbsp;был единственным дизайнером продукта. За&nbsp;год спроектировал десяток платёжных сценариев и&nbsp;следил, чтобы они оставались простыми, а&nbsp;лишних шагов становилось меньше,&nbsp;— продукт за&nbsp;это время заметно вырос.</p>
     </div>
     <div class="story__row rv">
-      <h2 class="story__h">Моя роль</h2>
-      <p class="story__p">Единственный дизайнер продукта. Проектировал сценарии оплаты и&nbsp;управления: главный экран виджета, добавление карт и&nbsp;счетов, настройки, лимиты&nbsp;— в&nbsp;светлой и&nbsp;тёмной темах.</p>
+      <h2 class="story__h">Главное достижение</h2>
+      <p class="story__p">Виджет ВТБ Pay на&nbsp;главной ВТБ&nbsp;Онлайн. Я&nbsp;сформулировал гипотезу, убедил в&nbsp;ней команду Pay и&nbsp;главного экрана&nbsp;— и&nbsp;она подтвердилась: через виджет начали подключаться более 40% новых токенизаций.</p>
     </div>
   </section>
 
-  <!-- Scenario intro -->
-  <section class="proj" data-screen-label="Scenario intro">
-    <h2 class="proj__title rv">Сценарий: оплата со&nbsp;счёта любого банка</h2>
-    <div class="proj__intro rv">
-      <p class="proj__p">Идея фичи: клиенту не&nbsp;нужно держать деньги на&nbsp;карте ВТБ. Он&nbsp;платит через ВТБ Pay, сумма автоматически переводится со&nbsp;счёта другого банка по&nbsp;СБП, а&nbsp;кешбэк от&nbsp;ВТБ сохраняется.</p>
-      <p class="proj__p">Сложность сценария в&nbsp;том, что в&nbsp;нём есть шаг на&nbsp;стороне другого банка, который мы&nbsp;не&nbsp;контролируем. Моя задача&nbsp;— провести клиента через подключение так, чтобы он&nbsp;понимал, что происходит и&nbsp;зачем.</p>
+  <!-- Widget on the home screen (before / after) -->
+  <figure class="band rv" data-screen-label="Widget states">
+    <h2 class="band__h">Виджет на&nbsp;главной</h2>
+    <div class="band__phones band__phones--lg">
+      <img src="img/vtb-pay/18_light_vidzhet_na_glavnoi_do.png" alt="Главная ВТБ Онлайн до подключения: виджет ВТБ Pay со строкой «Подключите и платите смартфоном»" />
+      <img src="img/vtb-pay/19_light_vidzhet_na_glavnoi_posle.png" alt="Главная ВТБ Онлайн после подключения: виджет ВТБ Pay с кнопками «Оплатить смартфоном» и «Добавить ярлык»" />
     </div>
-  </section>
+    <figcaption class="band__caption">Два состояния: до&nbsp;подключения&nbsp;— вход в&nbsp;сервис, после&nbsp;— оплата и&nbsp;настройка</figcaption>
+  </figure>
 
   <!-- Service screens -->
   <figure class="band rv" data-screen-label="Service screens">
-    <h2 class="band__h">Основные экраны сервиса</h2>
+    <h2 class="band__h">Экраны сервиса</h2>
     <div class="band__phones">
       <img src="img/vtb-pay/01_light_glavnyi_ekran_vidzheta.png" alt="Главный экран виджета: «Приложите смартфон к терминалу», активная карта с балансом и кнопка «Скрыть баланс»" />
       <img src="img/vtb-pay/02_light_vybor_karty_dlya_pokupki.png" alt="Раскрытая стопка карт: выбор карты для покупки и кнопка «Добавить карту или счёт»" />
       <img src="img/vtb-pay/03_light_nastroiki_oplata_smartfonom.png" alt="Настройки «Оплата смартфоном»: способы оплаты, основная карта, настройки виджета" />
       <img src="img/vtb-pay/04_light_vybor_karty_ili_scheta.png" alt="Выбор карты или счёта: список карт ВТБ и пункт «Счёт другого банка»" />
     </div>
-    <figcaption class="band__caption">Главный экран виджета, стопка карт, настройки, выбор карты или счета для добавления</figcaption>
+    <figcaption class="band__caption">Главный экран, стопка карт, настройки, добавление карты или счёта</figcaption>
   </figure>
 
   <!-- Connection flow -->
@@ -86,18 +87,18 @@
       <img src="img/vtb-pay/07_light_pochti_gotovo.png" alt="Экран «Почти готово»: проверочный перевод 10 ₽, просьба разрешить переводы без подтверждения, кнопки «Разрешить в другом банке» и «Уже разрешил»" />
       <img src="img/vtb-pay/08_light_schet_dobavlen_v_vidzhete.png" alt="Виджет после подключения: зелёная карточка «Счёт в Сбере» в стопке карт и тост «Счёт добавлен»" />
     </div>
-    <figcaption class="band__caption">Промо снимает вопросы до&nbsp;подключения, дальше&nbsp;— выбор банка по&nbsp;СБП, разрешение переводов на&nbsp;стороне другого банка и&nbsp;возврат в&nbsp;виджет: счёт встал в&nbsp;стопку карт</figcaption>
+    <figcaption class="band__caption">Оплата со&nbsp;счёта любого банка по&nbsp;СБП&nbsp;— кешбэк ВТБ сохраняется</figcaption>
   </figure>
 
   <!-- Account settings -->
   <figure class="band rv" data-screen-label="Account settings">
-    <h2 class="band__h">Настройка оплаты со&nbsp;счёта</h2>
+    <h2 class="band__h">Управление счётом</h2>
     <div class="band__phones band__phones--lg">
       <img src="img/vtb-pay/09_light_nastroiki_so_schetom_sbera.png" alt="Настройки: счёт другого банка в общем списке способов оплаты" />
       <img src="img/vtb-pay/10_light_upravlenie_schetom.png" alt="Управление счётом: привязка к карте ВТБ, виртуальный номер для возвратов, лимит и удаление" />
       <img src="img/vtb-pay/11_light_limit_na_pokupku.png" alt="Лимит на покупку: слайдер и поле суммы, диапазон от 1 000 до 150 000 ₽" />
     </div>
-    <figcaption class="band__caption">Счёт управляется так&nbsp;же, как карты ВТБ: привязка к&nbsp;карте, виртуальный номер для&nbsp;возвратов и&nbsp;лимит на&nbsp;одну покупку</figcaption>
+    <figcaption class="band__caption">Привязка к&nbsp;карте, виртуальный номер для&nbsp;возвратов, лимит на&nbsp;покупку</figcaption>
   </figure>
 
   <!-- Dark theme -->
@@ -111,7 +112,7 @@
       <img src="img/vtb-pay/13_dark_pochti_gotovo.png" alt="Экран «Почти готово» в тёмной теме" />
       <img src="img/vtb-pay/17_dark_schet_dobavlen_v_vidzhete.png" alt="Счёт добавлен — виджет в тёмной теме" />
     </div>
-    <figcaption class="band__caption">Сценарий собран в двух темах</figcaption>
+    <figcaption class="band__caption">Все сценарии&nbsp;— в&nbsp;двух темах</figcaption>
   </figure>
 
   <!-- Result -->
