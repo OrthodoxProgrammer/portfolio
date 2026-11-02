@@ -42,11 +42,24 @@ a {
   inset: 0;
   z-index: 1000;
   background-color: #ffffff;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 6px;
+}
+
+.home-loading .loader {
+  display: flex;
+}
+
+.home-loading .hero__title,
+.home-loading .reveal {
+  opacity: 0;
+}
+
+.home-loading .grid__line {
+  transform: scaleY(0);
 }
 
 .loader__text {
@@ -97,7 +110,7 @@ a {
   line-height: 0.8667;        /* = 130/150 */
   letter-spacing: -0.02em;    /* = -3px at 150px */
   text-align: center;
-  opacity: 0;                 /* animated in by JS when the loader finishes */
+  opacity: 1;                 /* visible by default, including without JavaScript */
   will-change: opacity, transform;
 }
 
@@ -118,7 +131,7 @@ a {
   bottom: 0;
   width: 1px;
   background-color: #E7E7E5;
-  transform: scaleY(0);
+  transform: scaleY(1);
   transform-origin: top center;
 }
 
@@ -290,9 +303,9 @@ a {
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ----- Reveal (driven by JS after 4s) ----- */
+/* ----- Reveal (driven by JS when the page assets are ready) ----- */
 .reveal {
-  opacity: 0;
+  opacity: 1;
   will-change: opacity;
 }
 

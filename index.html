@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="js/home-loader.js"></script>
   <title>Alcher — Ya delayu dizajn</title>
   <meta name="description" content="Персональный сайт продуктового дизайнера" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css?v=content-loader-1" />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
@@ -28,9 +29,9 @@
 <body>
   <noscript><div><img src="https://mc.yandex.ru/watch/111831839" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- Loading screen -->
-  <div class="loader" id="loader" data-screen-label="Loader">
+  <div class="loader" id="loader" data-screen-label="Loader" role="progressbar" aria-label="Загрузка сайта" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
     <p class="loader__text">Ща все будет&nbsp;— загружается</p>
-    <div class="loader__pct"><span id="pct">1</span>%</div>
+    <div class="loader__pct"><span id="pct">0</span>%</div>
   </div>
 
   <!-- Vertical grid lines (span the full page height) -->
@@ -60,7 +61,7 @@
     <span class="header__rule reveal" aria-hidden="true"></span>
 
     <!-- Bio -->
-    <p class="bio reveal">Лёша, продуктовый дизайнер. 4&nbsp;года проектирую цифровые продукты. Сейчас&nbsp;— в&nbsp;ВТБ, до&nbsp;этого в&nbsp;студии «Луч» работал над&nbsp;продуктами Авито и&nbsp;Mindbox</p>
+    <p class="bio reveal">Лёша, продуктовый дизайнер. 5&nbsp;лет проектирую цифровые продукты. Сейчас&nbsp;— в&nbsp;ВТБ, до&nbsp;этого в&nbsp;студии «Луч» работал над&nbsp;продуктами Авито и&nbsp;Mindbox</p>
 
     <!-- Headline + photo as one centered stage -->
     <div class="stage">
@@ -191,10 +192,8 @@
   </div>
   <script src="js/project-tenure.js"></script>
   <script>
-    // Reveal the secondary elements 4 seconds after the headline is shown.
-    // Driven with timers so it runs reliably in every renderer.
+    // First-visit entrance starts when the page assets are ready.
     (function () {
-      var DELAY = 500;        // delay before the reveal sequence starts after the loader hides
       var FADE = 900;         // fade-in length for header / bio / photo
       var LINE_GROW = 1000;   // grid lines grow over 1s
       var fadeEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
@@ -205,6 +204,7 @@
 
       function run(duration, onFrame) {
         var startTime = Date.now();
+        onFrame(0);
         var timer = setInterval(function () {
           var p = Math.min((Date.now() - startTime) / duration, 1);
           onFrame(easeOut(p));
@@ -218,6 +218,7 @@
           lineEls.forEach(function (el) { el.style.transform = 'scaleY(1)'; });
           return;
         }
+        lineEls.forEach(function (el) { el.style.transform = 'scaleY(0)'; });
         // Header / bio / photo fade in (incl. the horizontal header rule).
         run(FADE, function (e) {
           fadeEls.forEach(function (el) { el.style.opacity = e.toFixed(3); });
@@ -229,31 +230,6 @@
             lineEls.forEach(function (el) { el.style.transform = 'scaleY(' + e.toFixed(4) + ')'; });
           });
         }, FADE);
-      }
-
-      // ----- Loading screen: count 1 → 100, then reveal the page -----
-      var LOAD_DURATION = 3800; // smooth, steady count from 1% to 100% (<= 4s)
-      var loader = document.getElementById('loader');
-      var pctEl = document.getElementById('pct');
-
-      function finishLoading() {
-        // Fade the loader out, reveal the headline smoothly, then kick off
-        // the rest of the sequence.
-        if (reduce) {
-          loader.style.display = 'none';
-          title.style.opacity = '1';
-          title.style.transform = 'none';
-          setTimeout(start, DELAY);
-          return;
-        }
-        run(450, function (e) {
-          loader.style.opacity = (1 - e).toFixed(3);
-        });
-        revealTitle();
-        setTimeout(function () {
-          loader.style.display = 'none';
-          setTimeout(start, DELAY);
-        }, 450);
       }
 
       // Smooth headline entrance: gentle fade + slight rise over ~1.2s.
@@ -270,21 +246,12 @@
         });
       }
 
-      function runLoader() {
-        var startTime = Date.now();
-        var timer = setInterval(function () {
-          var p = Math.min((Date.now() - startTime) / LOAD_DURATION, 1);
-          var value = Math.max(1, Math.round(p * 100)); // linear → smooth, even pace
-          pctEl.textContent = value;
-          if (p >= 1) {
-            clearInterval(timer);
-            pctEl.textContent = 100;
-            setTimeout(finishLoading, 250);
-          }
-        }, 16);
-      }
-
-      runLoader();
+      // Returning visits are already visible before the first paint.
+      // No fixed wait or loader fade is added after resources finish loading.
+      document.addEventListener('home:ready', function () {
+        revealTitle();
+        start();
+      }, { once: true });
 
       // ----- Smooth inertial scrolling (mouse wheel) -----
       // The wheel is intercepted and the page glides to the target with an
