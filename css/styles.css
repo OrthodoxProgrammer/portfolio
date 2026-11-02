@@ -72,6 +72,7 @@ a {
 }
 
 .loader__pct {
+  font-variant-numeric: tabular-nums;
   color: #0E110F;
   text-align: center;
   font-family: "JetBrains Mono", monospace;

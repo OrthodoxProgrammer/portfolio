@@ -46,21 +46,11 @@
     resources.push(document.fonts ? document.fonts.ready : Promise.resolve());
     var settled = 0;
 
-    function updateProgress() {
-      settled += 1;
-      // Reserve 100% for completion of both content loading and the minimum time.
-      var value = Math.min(99, Math.round(settled / resources.length * 100));
-      if (percent) percent.textContent = value;
-      if (loader) loader.setAttribute('aria-valuenow', String(value));
-    }
+    var displayed = 0;
+    var ready = false;
+    var previousFrame = performance.now();
 
-    var contentReady = Promise.all(resources.map(function (resource) {
-      // A missing image or font must not leave the whole site behind a loader.
-      return resource.then(updateProgress, updateProgress);
-    }));
-    Promise.all([contentReady, minimumDuration]).then(function () {
-      if (percent) percent.textContent = 100;
-      if (loader) loader.setAttribute('aria-valuenow', '100');
+    function finishLoading() {
       try {
         sessionStorage.setItem(storageKey, '1');
       } catch (error) {
@@ -69,7 +59,33 @@
       root.classList.remove('home-loading');
       root.classList.add('home-ready');
       document.dispatchEvent(new Event('home:ready'));
+    }
+
+    function animateProgress(timestamp) {
+      // About 50 percentage points per second, at most one point per frame.
+      // Do not skip numbers after a slow frame or returning to a background tab.
+      var elapsed = Math.min(20, Math.max(0, timestamp - previousFrame));
+      previousFrame = timestamp;
+      var target = ready ? 100 : Math.min(99, Math.floor(settled / resources.length * 100));
+      displayed = Math.min(target, displayed + elapsed * 0.05);
+      var value = Math.floor(displayed);
+      if (percent) percent.textContent = value;
+      if (loader) loader.setAttribute('aria-valuenow', String(value));
+      if (ready && displayed >= 100) {
+        finishLoading();
+      } else {
+        requestAnimationFrame(animateProgress);
+      }
+    }
+
+    var contentReady = Promise.all(resources.map(function (resource) {
+      // A missing image or font must not leave the whole site behind a loader.
+      return resource.then(function () { settled += 1; }, function () { settled += 1; });
+    }));
+    Promise.all([contentReady, minimumDuration]).then(function () {
+      ready = true;
     });
+    requestAnimationFrame(animateProgress);
   }
 
   if (document.readyState === 'loading') {
