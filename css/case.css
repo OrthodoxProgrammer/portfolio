@@ -50,7 +50,7 @@
 .chero__meta {
   margin: 0 0 40px;
   padding-left: 16px;
-  color: #9A9D9C;
+  color: var(--color-text-muted);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 450;
   font-size: 20px;
@@ -62,7 +62,7 @@
   margin: 0;
   padding-left: 16px;
   max-width: 1180px;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 500;
   font-size: 64px;
@@ -75,7 +75,7 @@
   margin: 56px 0 0;
   padding-left: 16px;
   max-width: 740px;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 450;
   font-size: 20px;
@@ -92,7 +92,7 @@
   align-items: center;
   gap: 32px;
   padding: 100px var(--pad);
-  border-top: 1px solid #E7E7E5;
+  border-top: 1px solid var(--color-border);
 }
 
 .band img {
@@ -111,7 +111,7 @@
 .band__caption {
   margin: 0;
   text-align: center;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 450;
   font-size: 20px;
@@ -123,7 +123,7 @@
 .band__h {
   margin: 0 0 24px;
   text-align: center;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 500;
   font-size: 40px;
@@ -145,8 +145,8 @@
   width: clamp(180px, 15vw, 252px);
   height: auto;
   border-radius: 24px;
-  border: 1px solid #E7E7E5;
-  background: #fff;
+  border: 1px solid var(--color-border);
+  background: var(--color-media-bg);
 }
 
 /* larger phones for groups of 2–3 (and 3-up grids) */
@@ -171,7 +171,7 @@
 
 .band__pair img:first-child,
 .band__pair img:nth-child(2) {
-  border: 1px solid #E7E7E5;
+  border: 1px solid var(--color-border);
 }
 
 /* ----- Story rows (how / what / role) ----- */
@@ -185,13 +185,13 @@
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   padding: 64px var(--pad);
-  border-top: 1px solid #E7E7E5;
+  border-top: 1px solid var(--color-border);
 }
 
 .story__h {
   margin: 0;
   padding-left: 16px;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 500;
   font-size: 40px;
@@ -207,7 +207,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 450;
   font-size: 20px;
@@ -224,14 +224,14 @@
   content: "—";
   position: absolute;
   left: 0;
-  color: #9A9D9C;
+  color: var(--color-text-muted);
 }
 
 .story__p {
   margin: 0;
   padding-left: 16px;
   max-width: 568px;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 450;
   font-size: 20px;
@@ -250,7 +250,7 @@
   margin: 0 0 88px;
   padding: 0 var(--pad);
   padding-left: calc(var(--pad) + 16px);
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 500;
   font-size: 64px;
@@ -264,12 +264,12 @@
   gap: 24px;
   align-items: start;
   padding: 56px var(--pad);
-  border-top: 1px solid #E7E7E5;
+  border-top: 1px solid var(--color-border);
 }
 
 .chg__num {
   padding-left: 16px;
-  color: #9A9D9C;
+  color: var(--color-text-muted);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 450;
   font-size: 20px;
@@ -279,7 +279,7 @@
 
 .chg__h {
   margin: 0;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 500;
   font-size: 40px;
@@ -291,7 +291,7 @@
 .chg__p {
   margin: 0;
   max-width: 568px;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 450;
   font-size: 20px;
@@ -310,7 +310,7 @@
   margin: 0 0 56px;
   padding: 0 var(--pad);
   padding-left: calc(var(--pad) + 16px);
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 500;
   font-size: 64px;
@@ -330,7 +330,7 @@
   margin: 0;
   padding-left: 16px;
   max-width: 568px;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 450;
   font-size: 20px;
@@ -358,8 +358,8 @@
 
 /* Hairline frame for white-background screenshots */
 .band img.frame {
-  border: 1px solid #E7E7E5;
-  background: #fff;
+  border: 1px solid var(--color-border);
+  background: var(--color-media-bg);
 }
 
 /* ----- Result ----- */
@@ -367,14 +367,14 @@
   position: relative;
   z-index: 2;
   padding: 180px var(--pad) 200px;
-  border-top: 1px solid #E7E7E5;
+  border-top: 1px solid var(--color-border);
   text-align: center;
 }
 
 .cresult__note {
   margin: 0 auto 72px;
   max-width: 640px;
-  color: #9A9D9C;
+  color: var(--color-text-muted);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 450;
   font-size: 20px;
@@ -385,7 +385,7 @@
 .cresult__big {
   margin: 0 auto;
   max-width: 1180px;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 500;
   font-size: 64px;
@@ -397,7 +397,7 @@
 .cresult__sub {
   margin: 48px auto 0;
   max-width: 640px;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 450;
   font-size: 20px;
@@ -415,14 +415,14 @@
   gap: 24px;
   height: 100px;
   padding: 0 calc(var(--pad) + 16px);
-  border-top: 1px solid #E7E7E5;
+  border-top: 1px solid var(--color-border);
 }
 
 .cfooter__link {
   display: inline-flex;
   align-items: flex-start;
   gap: 2px;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 450;
   font-size: 20px;
@@ -456,12 +456,12 @@
   gap: 24px;
   align-items: start;
   padding: 72px var(--pad);
-  border-top: 1px solid #E7E7E5;
+  border-top: 1px solid var(--color-border);
 }
 
 .cstep__num {
   padding-left: 16px;
-  color: #9A9D9C;
+  color: var(--color-text-muted);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 450;
   font-size: 20px;
@@ -471,7 +471,7 @@
 
 .cstep__h {
   margin: 0;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 500;
   font-size: 40px;
@@ -483,7 +483,7 @@
 .cstep__p {
   margin: 24px 0 0;
   max-width: 568px;
-  color: #0E110F;
+  color: var(--color-text);
   font-family: "TT Firs Neue Variable", "Manrope", sans-serif;
   font-weight: 450;
   font-size: 20px;
@@ -501,26 +501,27 @@
   width: 100%;
   height: auto;
   border-radius: 24px;
-  border: 1px solid #E7E7E5;
-  background: #fff;
+  border: 1px solid var(--color-border);
+  background: var(--color-media-bg);
 }
 
 /* ----- Dark band (screens on dark background) ----- */
 .band--dark {
-  background: #0E110F;
+  --color-focus: var(--color-showcase-focus);
+  background: var(--color-showcase-bg);
 }
 
 .band--dark .band__h {
-  color: #FAFAF8;
+  color: var(--color-showcase-text);
 }
 
 .band--dark .band__caption {
-  color: #9A9D9C;
+  color: var(--color-showcase-muted);
 }
 
 .band--dark .band__phones img {
-  border-color: #2A2D2C;
-  background: #15171A;
+  border-color: var(--color-showcase-border);
+  background: var(--color-showcase-media);
 }
 
 /* ===== Lightbox ===== */
@@ -529,7 +530,7 @@
 }
 
 .band img:focus-visible {
-  outline: 2px solid #9A9D9C;
+  outline: 2px solid var(--color-focus);
   outline-offset: 4px;
 }
 
@@ -541,7 +542,7 @@ body.lb-lock {
   position: fixed;
   inset: 0;
   z-index: 3000;
-  background: rgba(14, 17, 15, 0.93);
+  background: var(--color-viewer-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -594,14 +595,14 @@ body.lb-lock {
   padding: 0;
   border: none;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  color: #FAFAF8;
+  background: var(--color-control-bg);
+  color: var(--color-text);
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .lb__close:hover {
-  background: rgba(255, 255, 255, 0.16);
+  background: var(--color-control-hover);
   transform: rotate(90deg);
 }
 

@@ -1,0 +1,69 @@
+/* Neutral grayscale tokens shared by every HTML page. No JavaScript required. */
+:root {
+  color-scheme: light;
+  --color-bg: #ffffff;
+  --color-text: #111111;
+  --color-text-muted: #686868;
+  --color-border: #e7e7e7;
+  --color-decoration: #c7c7c7;
+  --color-gradient-mid: #686868;
+  --color-gradient-end: #787878;
+  --color-modal-bg: #f4f4f4;
+  --color-action-bg: #111111;
+  --color-action-text: #ffffff;
+  --color-focus: #666666;
+  --color-viewer-bg: rgba(244, 244, 244, 0.96);
+  --color-control-bg: rgba(244, 244, 244, 0.96);
+  --color-control-hover: #e4e4e4;
+  --logo-filter: grayscale(1);
+
+  /* Media backing preserves the original light screenshots in either theme. */
+  --color-media-bg: #ffffff;
+  /* The explicitly dark screenshot section remains dark in either theme. */
+  --color-showcase-bg: #111111;
+  --color-showcase-text: #fafafa;
+  --color-showcase-muted: #ababab;
+  --color-showcase-border: #2c2c2c;
+  --color-showcase-media: #171717;
+  --color-showcase-focus: #cccccc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-bg: #141414;
+    --color-text: #ededed;
+    --color-text-muted: #ababab;
+    --color-border: #363636;
+    --color-decoration: #6c6c6c;
+    --color-gradient-mid: #ababab;
+    --color-gradient-end: #969696;
+    --color-modal-bg: #212121;
+    --color-action-bg: #ebebeb;
+    --color-action-text: #141414;
+    --color-focus: #cccccc;
+    --color-viewer-bg: rgba(11, 11, 11, 0.96);
+    --color-control-bg: rgba(33, 33, 33, 0.96);
+    --color-control-hover: #363636;
+    --logo-filter: grayscale(1) invert(1);
+    --color-showcase-bg: #0b0b0b;
+    --color-showcase-text: #ededed;
+    --color-showcase-border: #363636;
+    --color-showcase-media: #181818;
+  }
+}
+
+html {
+  background-color: var(--color-bg);
+}
+
+::selection {
+  color: var(--color-action-text);
+  background-color: var(--color-action-bg);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 4px;
+}
