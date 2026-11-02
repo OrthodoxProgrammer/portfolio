@@ -87,19 +87,25 @@ test('returning visit is ready before DOM parsing, without loader or entrance ev
   assert.deepEqual(state.events, []);
 });
 
-test('fast content stays visible for two seconds, then completes', async () => {
+test('fast content stays at 99% until two seconds pass, then completes at 100%', async () => {
   const state = setup({ images: [image({ promise: Promise.resolve() })] });
   state.domReady();
   await flush();
-  assert.equal(state.percent.textContent, 100);
+  assert.equal(state.percent.textContent, 99);
+  assert.equal(state.attributes['aria-valuenow'], '99');
   assert.ok(state.classes.has('home-loading'));
   state.advance(1999);
   await flush();
+  assert.equal(state.percent.textContent, 99);
+  assert.equal(state.attributes['aria-valuenow'], '99');
   assert.ok(state.classes.has('home-loading'));
   assert.equal(state.saved.length, 0);
   assert.deepEqual(state.events, []);
   state.advance(1);
   await flush();
+  assert.equal(state.percent.textContent, 100);
+  assert.equal(state.attributes['aria-valuenow'], '100');
+  assert.ok(!state.classes.has('home-loading'));
   assert.ok(state.classes.has('home-ready'));
   assert.deepEqual(state.events, ['home:ready']);
 });

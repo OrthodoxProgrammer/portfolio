@@ -48,7 +48,8 @@
 
     function updateProgress() {
       settled += 1;
-      var value = Math.round(settled / resources.length * 100);
+      // Reserve 100% for completion of both content loading and the minimum time.
+      var value = Math.min(99, Math.round(settled / resources.length * 100));
       if (percent) percent.textContent = value;
       if (loader) loader.setAttribute('aria-valuenow', String(value));
     }
@@ -58,6 +59,8 @@
       return resource.then(updateProgress, updateProgress);
     }));
     Promise.all([contentReady, minimumDuration]).then(function () {
+      if (percent) percent.textContent = 100;
+      if (loader) loader.setAttribute('aria-valuenow', '100');
       try {
         sessionStorage.setItem(storageKey, '1');
       } catch (error) {
