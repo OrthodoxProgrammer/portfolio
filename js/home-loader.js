@@ -12,6 +12,10 @@
     // Storage can be unavailable; loading the page must still work.
   }
   root.classList.add('home-loading');
+  // Run the minimum display time alongside loading, not after it.
+  var minimumDuration = new Promise(function (resolve) {
+    setTimeout(resolve, 2000);
+  });
 
   function imageReady(image) {
     // Wait for decoding too, so downloaded images are ready to be displayed.
@@ -49,10 +53,11 @@
       if (loader) loader.setAttribute('aria-valuenow', String(value));
     }
 
-    Promise.all(resources.map(function (resource) {
+    var contentReady = Promise.all(resources.map(function (resource) {
       // A missing image or font must not leave the whole site behind a loader.
       return resource.then(updateProgress, updateProgress);
-    })).then(function () {
+    }));
+    Promise.all([contentReady, minimumDuration]).then(function () {
       try {
         sessionStorage.setItem(storageKey, '1');
       } catch (error) {

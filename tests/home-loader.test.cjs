@@ -21,6 +21,17 @@ function setup({ images = [], fonts = Promise.resolve(), visited = false, blocke
   const percent = { textContent: 0 };
   const events = [];
   const saved = [];
+  const timers = [];
+  let now = 0;
+  function advance(milliseconds) {
+    now += milliseconds;
+    for (const timer of timers) {
+      if (!timer.done && timer.due <= now) {
+        timer.done = true;
+        timer.callback();
+      }
+    }
+  }
   const document = {
     documentElement: { classList: { add: value => classes.add(value), remove: value => classes.delete(value) } },
     readyState: 'loading', images, fonts: { ready: fonts },
@@ -30,12 +41,13 @@ function setup({ images = [], fonts = Promise.resolve(), visited = false, blocke
   };
   vm.runInNewContext(source, {
     document, Event, Promise,
+    setTimeout: (callback, delay) => timers.push({ callback, due: now + delay, done: false }),
     sessionStorage: {
       getItem() { if (blockedStorage) throw new Error('Storage blocked'); return visited ? '1' : null; },
       setItem(key, value) { if (blockedStorage) throw new Error('Storage blocked'); saved.push([key, value]); }
     }
   });
-  return { classes, listeners, percent, attributes, events, saved, domReady: () => listeners.get('DOMContentLoaded')() };
+  return { classes, listeners, percent, attributes, events, saved, timers, advance, domReady: () => listeners.get('DOMContentLoaded')() };
 }
 
 test('waits for both decoded images and fonts, with real resource progress', async () => {
@@ -52,6 +64,8 @@ test('waits for both decoded images and fonts, with real resource progress', asy
   fonts.resolve();
   await flush();
   assert.equal(state.percent.textContent, 75);
+  state.advance(3000);
+  await flush();
   assert.ok(state.classes.has('home-loading'));
   assert.equal(state.saved.length, 0);
   belowFold.resolve();
@@ -69,11 +83,30 @@ test('returning visit is ready before DOM parsing, without loader or entrance ev
   assert.ok(state.classes.has('home-ready'));
   assert.ok(!state.classes.has('home-loading'));
   assert.equal(state.listeners.size, 0);
+  assert.equal(state.timers.length, 0);
   assert.deepEqual(state.events, []);
 });
 
-test('cached content completes without an artificial timeout', async () => {
+test('fast content stays visible for two seconds, then completes', async () => {
   const state = setup({ images: [image({ promise: Promise.resolve() })] });
+  state.domReady();
+  await flush();
+  assert.equal(state.percent.textContent, 100);
+  assert.ok(state.classes.has('home-loading'));
+  state.advance(1999);
+  await flush();
+  assert.ok(state.classes.has('home-loading'));
+  assert.equal(state.saved.length, 0);
+  assert.deepEqual(state.events, []);
+  state.advance(1);
+  await flush();
+  assert.ok(state.classes.has('home-ready'));
+  assert.deepEqual(state.events, ['home:ready']);
+});
+
+test('time spent parsing the page counts toward the minimum', async () => {
+  const state = setup();
+  state.advance(2500);
   state.domReady();
   await flush();
   assert.ok(state.classes.has('home-ready'));
@@ -85,6 +118,7 @@ test('failed assets settle and do not lock the page', async () => {
   state.domReady();
   broken.reject(new Error('Image unavailable'));
   fonts.reject(new Error('Font unavailable'));
+  state.advance(2000);
   await flush();
   assert.ok(state.classes.has('home-ready'));
 });
@@ -93,6 +127,7 @@ test('blocked session storage and empty modal image do not break loading', async
   const placeholder = { currentSrc: '', getAttribute: () => null, decode: () => { throw new Error('Empty image must be skipped'); } };
   const state = setup({ images: [placeholder], blockedStorage: true });
   state.domReady();
+  state.advance(2000);
   await flush();
   assert.ok(state.classes.has('home-ready'));
 });
@@ -105,6 +140,7 @@ test('fallback without decode waits for image load or error', async () => {
     removeEventListener: name => callbacks.delete(name)
   }] });
   state.domReady();
+  state.advance(2000);
   await flush();
   assert.ok(state.classes.has('home-loading'));
   callbacks.get('error')();

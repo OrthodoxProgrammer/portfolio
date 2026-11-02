@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="js/home-loader.js"></script>
+  <script src="js/home-loader.js?v=min-2s-1"></script>
   <title>Alcher — Ya delayu dizajn</title>
   <meta name="description" content="Персональный сайт продуктового дизайнера" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -247,7 +247,7 @@
       }
 
       // Returning visits are already visible before the first paint.
-      // No fixed wait or loader fade is added after resources finish loading.
+      // Start immediately after content and the loader's minimum time are ready.
       document.addEventListener('home:ready', function () {
         revealTitle();
         start();
